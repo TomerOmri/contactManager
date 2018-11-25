@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+
 import {
   ListGroup,
   ListGroupItem,
@@ -9,36 +11,66 @@ import {
 class Contact extends Component {
   constructor() {
     super();
+    this.state = { showContactInfo: false };
   }
+
+  onShowClick = () => {
+    this.setState({ showContactInfo: !this.state.showContactInfo });
+  };
+
+  onDeleteClick = () => {
+    this.props.deleteClickHandler();
+  };
 
   render() {
     const { contact } = this.props;
-    let infoVisible = false;
-
-    const onShowInfo = () => {
-      infoVisible = infoVisible ? false : true;
-    };
+    const { showContactInfo } = this.state;
 
     return (
       <div className="container">
-        <ListGroupItem active>
+        <ListGroupItem>
           <ListGroupItemHeading>
             {contact.name}{" "}
-            <i onClick={onShowInfo()} className="fas fa-sort-down" />
+            <i
+              onClick={() => {
+                this.onShowClick();
+              }}
+              className="fas fa-sort-down"
+              style={{ cursor: "pointer", color: "black" }}
+            />
+            <i
+              className="fas fa-times"
+              onClick={() => {
+                this.props.onDeleteClick();
+              }}
+              style={{ cursor: "pointer", float: "right", color: "red" }}
+            />
           </ListGroupItemHeading>
         </ListGroupItem>
-        <ListGroupItem>
-          <ListGroupItemHeading />
-          <ListGroupItemText>
-            <ul>
-              <li>{contact.phone}</li>
-              <li>{contact.email}</li>
-            </ul>
-          </ListGroupItemText>
-        </ListGroupItem>
+        {showContactInfo ? (
+          <div>
+            {" "}
+            <ListGroupItem>
+              <ListGroupItemHeading />
+              <ListGroupItemText>
+                <ul>
+                  <li>{contact.phone}</li>
+                  <li>{contact.email}</li>
+                </ul>
+              </ListGroupItemText>
+            </ListGroupItem>
+          </div>
+        ) : (
+          <div />
+        )}
       </div>
     );
   }
 }
+
+Contact.propTypes = {
+  contact: PropTypes.object.isRequired,
+  deleteClickHandler: PropTypes.func.isRequired
+};
 
 export default Contact;

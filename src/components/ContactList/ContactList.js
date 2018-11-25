@@ -10,6 +10,9 @@ import {
 class ContactList extends Component {
   constructor() {
     super();
+
+    // this.deleteClickHandler = this.deleteClickHandler.bind(this);
+
     this.state = {
       contacts: [
         {
@@ -34,21 +37,28 @@ class ContactList extends Component {
     };
   }
 
+  deleteContact = () => {
+    console.log("123");
+  };
+
   render() {
     const { contacts } = this.state;
 
     return (
-      <div>
+      <React.Fragment>
         <ListGroup>
           {contacts.map(contact => {
             return (
               <div className="container">
-                <Contact contact={contact} />
+                <Contact
+                  contact={contact}
+                  deleteClickHandler={this.deleteContact}
+                />
               </div>
             );
           })}
         </ListGroup>
-      </div>
+      </React.Fragment>
     );
   }
 }

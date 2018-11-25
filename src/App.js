@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Contact from "./components/ContactList/ContactList.js";
+import ContactList from "./components/ContactList/ContactList.js";
 import Header from "./components/Header/Header.js";
 import { Container, Row, Col } from "reactstrap";
 
@@ -14,7 +14,7 @@ class App extends Component {
           <Row>
             <Col sm="12" md={{ size: 6, offset: 3 }}>
               {" "}
-              <Contact />
+              <ContactList />
             </Col>
           </Row>
         </div>
