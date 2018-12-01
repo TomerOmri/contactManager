@@ -1,17 +1,10 @@
 import React, { Component } from "react";
 import Contact from "../Contact/Contact.js";
-import {
-  ListGroup,
-  ListGroupItem,
-  ListGroupItemHeading,
-  ListGroupItemText
-} from "reactstrap";
+import { ListGroup } from "reactstrap";
 
 class ContactList extends Component {
   constructor() {
     super();
-
-    // this.deleteClickHandler = this.deleteClickHandler.bind(this);
 
     this.state = {
       contacts: [
@@ -37,8 +30,13 @@ class ContactList extends Component {
     };
   }
 
-  deleteContact = () => {
-    console.log("123");
+  deleteContact = id => {
+    console.log(id);
+    let { contacts } = this.state;
+    const newContacts = contacts.filter(contact => {
+      return contact.id !== id;
+    });
+    this.setState({ contacts: newContacts });
   };
 
   render() {
@@ -52,7 +50,7 @@ class ContactList extends Component {
               <div className="container">
                 <Contact
                   contact={contact}
-                  deleteClickHandler={this.deleteContact}
+                  deleteClickHandler={this.deleteContact.bind(this, contact.id)}
                 />
               </div>
             );

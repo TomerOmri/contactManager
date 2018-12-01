@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import {
-  ListGroup,
   ListGroupItem,
   ListGroupItemHeading,
   ListGroupItemText
@@ -41,7 +40,7 @@ class Contact extends Component {
             <i
               className="fas fa-times"
               onClick={() => {
-                this.props.onDeleteClick();
+                this.onDeleteClick();
               }}
               style={{ cursor: "pointer", float: "right", color: "red" }}
             />

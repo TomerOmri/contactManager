@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import ContactList from "./components/ContactList/ContactList.js";
 import Header from "./components/Header/Header.js";
-import { Container, Row, Col } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 class App extends Component {
   render() {
