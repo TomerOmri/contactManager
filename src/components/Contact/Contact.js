@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Consumer } from "../../Context.js";
 
 import {
   ListGroupItem,
@@ -17,8 +18,8 @@ class Contact extends Component {
     this.setState({ showContactInfo: !this.state.showContactInfo });
   };
 
-  onDeleteClick = () => {
-    this.props.deleteClickHandler();
+  onDeleteClick = (dispatch, id) => {
+    dispatch({ type: "DELETE_CONTACT", payload: id });
   };
 
   render() {
@@ -26,50 +27,55 @@ class Contact extends Component {
     const { showContactInfo } = this.state;
 
     return (
-      <div className="container">
-        <ListGroupItem>
-          <ListGroupItemHeading>
-            {contact.name}{" "}
-            <i
-              onClick={() => {
-                this.onShowClick();
-              }}
-              className="fas fa-sort-down"
-              style={{ cursor: "pointer", color: "black" }}
-            />
-            <i
-              className="fas fa-times"
-              onClick={() => {
-                this.onDeleteClick();
-              }}
-              style={{ cursor: "pointer", float: "right", color: "red" }}
-            />
-          </ListGroupItemHeading>
-        </ListGroupItem>
-        {showContactInfo ? (
-          <div>
-            {" "}
-            <ListGroupItem>
-              <ListGroupItemHeading />
-              <ListGroupItemText>
-                <ul>
-                  <li>{contact.phone}</li>
-                  <li>{contact.email}</li>
-                </ul>
-              </ListGroupItemText>
-            </ListGroupItem>
-          </div>
-        ) : (
-          <div />
-        )}
-      </div>
+      <Consumer>
+        {value => {
+          return (
+            <div className="container">
+              <ListGroupItem>
+                <ListGroupItemHeading>
+                  {contact.name}{" "}
+                  <i
+                    onClick={() => {
+                      this.onShowClick();
+                    }}
+                    className="fas fa-sort-down"
+                    style={{ cursor: "pointer", color: "black" }}
+                  />
+                  <i
+                    className="fas fa-times"
+                    onClick={() => {
+                      this.onDeleteClick(value.dispatch, contact.id);
+                    }}
+                    style={{ cursor: "pointer", float: "right", color: "red" }}
+                  />
+                </ListGroupItemHeading>
+              </ListGroupItem>
+              {showContactInfo ? (
+                <div>
+                  {" "}
+                  <ListGroupItem>
+                    <ListGroupItemHeading />
+                    <ListGroupItemText>
+                      <ul>
+                        <li>{contact.phone}</li>
+                        <li>{contact.email}</li>
+                      </ul>
+                    </ListGroupItemText>
+                  </ListGroupItem>
+                </div>
+              ) : (
+                <div />
+              )}
+            </div>
+          );
+        }}
+      </Consumer>
     );
   }
 }
 
 Contact.propTypes = {
-  contact: PropTypes.object.isRequired,
-  deleteClickHandler: PropTypes.func.isRequired
+  contact: PropTypes.object.isRequired
 };
 
 export default Contact;
