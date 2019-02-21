@@ -31,6 +31,7 @@ class ContactForm extends Component {
     dispatch({ type: "ADD_CONTACT", payload: newContact });
 
     this.setState({ name: "", email: "", phone: "" });
+    this.props.history.push('/');
   };
 
   render() {
