@@ -1,15 +1,15 @@
 {
-  "main.css": "/contactmanager/static/css/main.f2970884.chunk.css",
-  "main.js": "/contactmanager/static/js/main.64f7f7b1.chunk.js",
-  "main.js.map": "/contactmanager/static/js/main.64f7f7b1.chunk.js.map",
-  "static/css/1.b78df274.chunk.css": "/contactmanager/static/css/1.b78df274.chunk.css",
-  "static/js/1.46114c97.chunk.js": "/contactmanager/static/js/1.46114c97.chunk.js",
-  "static/js/1.46114c97.chunk.js.map": "/contactmanager/static/js/1.46114c97.chunk.js.map",
-  "runtime~main.js": "/contactmanager/static/js/runtime~main.72aa8290.js",
-  "runtime~main.js.map": "/contactmanager/static/js/runtime~main.72aa8290.js.map",
-  "static/css/1.b78df274.chunk.css.map": "/contactmanager/static/css/1.b78df274.chunk.css.map",
-  "static/css/main.f2970884.chunk.css.map": "/contactmanager/static/css/main.f2970884.chunk.css.map",
-  "index.html": "/contactmanager/index.html",
-  "precache-manifest.8fdf3752285e43a34c39bb9726a88089.js": "/contactmanager/precache-manifest.8fdf3752285e43a34c39bb9726a88089.js",
-  "service-worker.js": "/contactmanager/service-worker.js"
+  "main.css": "/contactManager/static/css/main.f2970884.chunk.css",
+  "main.js": "/contactManager/static/js/main.233d8e3f.chunk.js",
+  "main.js.map": "/contactManager/static/js/main.233d8e3f.chunk.js.map",
+  "static/css/1.b78df274.chunk.css": "/contactManager/static/css/1.b78df274.chunk.css",
+  "static/js/1.46114c97.chunk.js": "/contactManager/static/js/1.46114c97.chunk.js",
+  "static/js/1.46114c97.chunk.js.map": "/contactManager/static/js/1.46114c97.chunk.js.map",
+  "runtime~main.js": "/contactManager/static/js/runtime~main.c9c7142b.js",
+  "runtime~main.js.map": "/contactManager/static/js/runtime~main.c9c7142b.js.map",
+  "static/css/1.b78df274.chunk.css.map": "/contactManager/static/css/1.b78df274.chunk.css.map",
+  "static/css/main.f2970884.chunk.css.map": "/contactManager/static/css/main.f2970884.chunk.css.map",
+  "index.html": "/contactManager/index.html",
+  "precache-manifest.e54ea766149bb11802e7c761e71ee30d.js": "/contactManager/precache-manifest.e54ea766149bb11802e7c761e71ee30d.js",
+  "service-worker.js": "/contactManager/service-worker.js"
 }
