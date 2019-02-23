@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Consumer } from "../../Context.js";
 import uuid from "uuid";
+import axios from 'axios';
 
 import {
   Card,
@@ -24,11 +25,21 @@ class ContactForm extends Component {
   onChange = event =>
     this.setState({ [event.target.name]: event.target.value });
 
-  onSubmit = (dispatch, event) => {
+  onSubmit  = async (dispatch, event) => {
     const { name, email, phone } = this.state;
 
     const newContact = { id: uuid(), name, email, phone };
-    dispatch({ type: "ADD_CONTACT", payload: newContact });
+
+    try {
+      const postStatus = await axios.post('https://jsonplaceholder.typicode.com/users', newContact);
+      dispatch({ type: "ADD_CONTACT", payload: newContact });
+    } catch (e) {
+      dispatch({ type: "ADD_CONTACT", payload: newContact });
+    }
+
+
+
+
 
     this.setState({ name: "", email: "", phone: "" });
     this.props.history.push('/');

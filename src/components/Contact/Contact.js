@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Consumer } from "../../Context.js";
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import {
   ListGroupItem,
@@ -19,7 +21,10 @@ class Contact extends Component {
   };
 
   onDeleteClick = (dispatch, id) => {
-    dispatch({ type: "DELETE_CONTACT", payload: id });
+    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+        .then( () => { dispatch({ type: "DELETE_CONTACT", payload: id }) });
+  };
+  onEditClick = (dispatch, id) => {
   };
 
   render() {
@@ -46,8 +51,15 @@ class Contact extends Component {
                     onClick={() => {
                       this.onDeleteClick(value.dispatch, contact.id);
                     }}
-                    style={{ cursor: "pointer", float: "right", color: "red" }}
+                    style={{ cursor: "pointer", float: "right", color: "red", margin: '5px' }}
                   />
+                  <Link to={`/contact/edit/${contact.id}`} >
+                    <i
+                        className="fas fa-edit"
+                        style={{ cursor: "pointer", float: "right" , margin: '5px'}}
+                    />
+                  </Link>
+
                 </ListGroupItemHeading>
               </ListGroupItem>
               {showContactInfo ? (
